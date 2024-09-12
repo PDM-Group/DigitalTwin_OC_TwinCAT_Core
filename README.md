@@ -3,16 +3,14 @@
 The TwinCAT Core Library is used in the TwinCAT PLC project and provides the behaviour models for industrial devices as function blocks.
 
 ## 1. Project setup
-+ Install and add the `OC_Core` library in the PLC project with the standard library manager
-+ Install the following dependencies:
++ Create PLC Project
++ Install and add the `OC_Core` library
++ Install the dependencies:
   * TcUnit
   * Tc2_Utilities
   * Tc2_Math
   * Tc3_Module
-+ Declare FB_System in your main program
-> [!WARNING]  
-> There should always be an instance of FB_System in the PLC project, otherwise the project can't be started. 
-> Take a look at the logs in the console
++ Declare and call `FB_System` in your main program
 
 ## 2. Overview
 In Unity project each device has a link class, which defines the interface for communication with TwinCAT. 
@@ -24,8 +22,10 @@ The search is done by name and type. The mapping is done when all the interface 
 
 ## 2. Components
 ### 2.1 System
-
-
+The main component in Open Commissioning is `FB_System`. 
+This function block contains the system parameters and the global system variables such as `fDeltatime`, which can be accessed by other FBs in the project through the static `GVL_Core.fbSystem`.
+`FB_System` should be defined and called up once in the project so that the GVL reference is correctly assigned. 
+If `FB_System` is not defined or there are several instances, the TwinCAT PLC project is forced into config mode with corresponding messages in the console.
 
 ### 2.2 Links
 The links are the basic communication blocks in open commissioning that realise the interface for data exchange.
@@ -49,7 +49,7 @@ An example of the abstracted `FB_Drive` is shown in the following images.
 ![Device_Example1](./images/Device_Example1_dark.png#gh-dark-mode-only)
 ![Device_Example1](./images/Device_Example1_light.png#gh-light-mode-only)
 
-#### 2.2.1 Basic Devices
+#### 2.2.1 Basic
 The basic Function Blocks for the most frequently used devices are listed under Basic folder in Library.
 * `FB_Button`
 * `FB_Cylinder`
