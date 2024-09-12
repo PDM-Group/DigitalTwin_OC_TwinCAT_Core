@@ -63,6 +63,12 @@ The Drive Folder collects the function blocks for various drives, such as simula
 The library is planned to be further developed with several functional modules in the future.
 
 
+## 4. Contributing
+Pull requests, bug reports, and all other forms of contribution are welcomed and highly encouraged!
+Please review our Contributing Guidelines. 
+
+### 4.1 Programming Conventions
+[Beckhoff Programming Conventions](https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/12049233675.html&id=6398798947359024199) are used in this project.
 
 
 
